@@ -1,41 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <TextInput/>
-  <ImageUpload/>
-  <TemplateEditor/>
-  <SignaturePreview/>
-  <TemplateManagement/>
+  <SidebarPanel />
+  <ConfigPanel />
+  <PreviewPanel />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import TextInput from './components/TextInput.vue'
-import ImageUpload from './components/ImageUpload.vue'
-import TemplateEditor from './components/TemplateEditor.vue'
-import SignaturePreview from './components/SignaturePreview.vue'
-import TemplateManagement from './components/TemplateManagement.vue'
+import SidebarPanel from './components/SidebarPanel'
+import ConfigPanel from './components/ConfigPanel'
+import PreviewPanel from './components/PreviewPanel'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    TextInput,
-    ImageUpload,
-    TemplateEditor,
-    SignaturePreview,
-    TemplateManagement
+    SidebarPanel,
+    ConfigPanel,
+    PreviewPanel
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+html,
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 85px 550px 1fr;
+  height: 100vh;
+}
+.desc {
+  flex-grow: 1;
+  font-size: 12px;
+  line-height: 1.5em;
+  color: #aaa;
 }
 </style>

@@ -1,13 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createStorage } from './storage/StorageFactory';
+import store from './storage/store';
+import router from './router'
+import ElementPlus from 'element-plus'
+import 'element-plus/theme-chalk/index.css'
 
+const app = createApp(App)
 
-const app = createApp(App).mount('#app')
+app.use(ElementPlus)
 
-const storage = createStorage('cloud');
-
-app.provide('storage', storage);
+app.use(store)
+app.use(router)
 
 app.mount('#app');
 
