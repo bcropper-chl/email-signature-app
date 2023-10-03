@@ -69,10 +69,14 @@ export function saveProject (data, asCurrent) {
       }
     }
 
-    const save = store.put(data)
+    try {
+      const save = store.put(data)
 
-    save.onsuccess = e => {
-      resolve(e)
+      save.onsuccess = e => {
+        resolve(e)
+      }
+    } catch (e) {
+      console.log(JSON.stringify(e))
     }
   })
 }
@@ -86,10 +90,17 @@ export function updateProjectById (data) {
   openDB()
 
   return onSuccess(resolve => {
-    const save = store.put(data)
-
-    save.onsuccess = e => {
-      resolve(e)
+    console.log(JSON.stringify(data))
+    try {
+      const save = store.put(data)
+      save.onsuccess = e => {
+        resolve(e)
+      }
+      save.onerror = e => {
+        console.log(JSON.stringify(e))
+      }
+    } catch (e) {
+      console.log(JSON.stringify(e))
     }
   })
 }
