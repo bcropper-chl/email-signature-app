@@ -34,12 +34,6 @@ export default {
         template: 'SignatureTemplate1',
         basic: { ...rootState.basic },
         options: { ...rootState.options },
-        addons: {
-          installed: []
-        },
-        socials: {
-          installed: []
-        }
       }
 
       await saveProject(project)
@@ -54,17 +48,6 @@ export default {
     async updateProject ({ commit, dispatch, rootState }, data) {
       const addons = { ...rootState.addons }
 
-      if (addons.installed.length === 0) {
-        for (let i in addons) {
-          delete addons[i]
-        }
-      }
-      const socials = { ...rootState.socials }
-      if (socials.installed.length === 0) {
-        for (let i in socials) {
-          delete socials[i]
-        }
-      }
 
       const options = { ...rootState.options }
       delete options.color.mainPreview
@@ -73,10 +56,6 @@ export default {
       const project = {
         ...data,
         template: rootState.template.selected,
-        addons,
-        socials: {
-          installed: rootState.socials.installed
-        },
         basic: { ...rootState.basic },
         options
       }
